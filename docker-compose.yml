@@ -1,0 +1,15 @@
+version: "3"
+services:
+  proxy:
+    build:
+      context: ./proxy
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    environment:
+      LOG_STDOUT: "true"
+      BACKEND_HOST: backend
+  backend:
+    build:
+      context: ./backend
